@@ -3,11 +3,46 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from "./pages/Home"
+import SignIn from './pages/SignIn';
+import Register from './pages/Register';
+import ContactUs from './pages/ContactUs';
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App/>,
+    children : [
+      {
+        path: '/',
+        element: <Home/>
+      },
+      {
+        path: '/signin',
+        element: <SignIn/>
+      },
+      {
+        path:  '/register',
+        element: <Register/>
+      },
+      {
+        path: '/contact',
+        element: <ContactUs/>
+      }
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+     <RouterProvider router={router}>
+
+     </RouterProvider>
   </React.StrictMode>
 );
 
